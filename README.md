@@ -8,6 +8,15 @@ You can [find more details in the press release]().
 
 If you have an idea for an article, tutorial or an interesting piece of content that you want to publish in the Chainstack Developer Hub, you can do it by following these steps:
 
+### 0. Join our online communities
+
+We recommend all Chainstack Developer Hub members to join our Discord and Telegram channels to have direct contact with the team.
+
+- [Join our Discord](https://discord.gg/Cymtg2f7pX)
+- [Join our Telegram](https://t.me/chainstack)
+
+If you don't want to miss any of the content published, you can also [follow us on Twitter](https://twitter.com/ChainstackHQ) 🤙
+
 ### 1. Create a proposal
 
 Please review our [content requirements below](#content-requirements) before submiting a proposal.
