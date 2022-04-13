@@ -60,6 +60,10 @@ Once the article is ready to be published, we'll schedule it and let you know th
 
 Once your article is published in the blog, you'll get rewarded for it 💰
 
+### 6. Provide support
+
+Once your article is published, some members of the community might need some assistance or find issues. You'll be asked to provide support on those cases.
+
 ## Content requirements
 
 **General requirements**
