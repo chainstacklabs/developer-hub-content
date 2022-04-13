@@ -23,16 +23,16 @@ Please review our [content requirements below](#content-requirements) before sub
 
 Once you've reviewed the requirements, [create a proposal here](https://github.com/chainstack/developer-hub-content/issues/new?assignees=&labels=&template=proposal.md&title=%5BPROPOSAL%5D).
 
-Someone from the Chainstack team will review your proposal and comment on it. Once it's approved
+Someone from the Chainstack team will review your proposal and comment on it. Once it's approved, you can move on to the next step 👇
 
 ### 2. Write and submit the content
 
-Before starting working on the first draft of your article, check the [article guidelines](#article-guidelines) below.
+Before starting working on the first draft of your article, **check the [article guidelines below](#article-guidelines)**.
 
-To submit the content, for this repo and submit a PR with the following changes.
+To submit the content, fork this repo and **submit a PR with the following changes:**
 
-- All your content will be created in a new folder folder inside the corresponding category (`coding-articles`, `info-articles` or `other-articles`).
-- The code will be created inside a `code` subfolder. There must be a `Readme.md` file with instructions to install dependencies and run the code.
+- All your content will be created in a subfolder inside the corresponding category (`coding-articles`, `info-articles` or `other-articles`). Follow the kebab-case naming convention (eg "my-awesome-article")
+- The code will be created inside a `code` subfolder. There must be a `README.md` file with instructions to install dependencies and run the code, etc.
 - All images will stored inside an `images` subfolder.
 - Create an `Article.md` file with the article itself.
 - Create an `About.md` file with information about you and some websites and social media profiles that you'd like us to include.
