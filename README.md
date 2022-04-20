@@ -116,21 +116,26 @@ Here we'll detail some guidelines that you should follow when working on your ar
 ## Frequently asked questions
 
 **Can I cross-post articles from my own blog?**
+
 No. All content must be original and not previously published.
 
 **Do I get paid if one of my articles/tutorials is published?**
+
 Yes, of course.
 
 **How much do you pay for each article?**
+
 There is a fixed reward of $200 for every accepted and published article with an additional $100 bonus reward in some cases.
 
 **How do I get paid?**
+
 Once your article has been published, you have to create an invoice and send it to us.
 
 **Can I promote my personal project on the article?**
+
 You can promote your projects in your bio, which will be published with the article.
 
-If you ahve any other questions, you can contact us [on our Discord channel](https://discord.gg/Cymtg2f7pX).
+If you have any other questions, you can contact us [on our Discord channel](https://discord.gg/Cymtg2f7pX).
 
 ## Additional information
 
