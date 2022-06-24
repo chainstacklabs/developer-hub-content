@@ -23,7 +23,9 @@ If you don't want to miss any of the content published, you can also [follow us 
 
 **Please review our [content requirements below](#content-requirements) before submiting a proposal.**
 
-Once you've reviewed the requirements, [create a proposal here](https://github.com/chainstack/developer-hub-content/issues/new?assignees=&labels=&template=proposal.md&title=%5BPROPOSAL%5D).
+Once you've reviewed the requirements, 👉👉[create a proposal here](https://github.com/chainstack/developer-hub-content/issues/new?assignees=&labels=&template=proposal.md&title=%5BPROPOSAL%5D) 👈👈
+
+Make sure you add a title, check the correspondent category (coding, informational, other), and add a brief description of what the article is about. **Do not include more details like code snippets.**
 
 Someone from the Chainstack team will review your proposal and comment on it. Once it's approved, you can move on to the next step 👇
 
@@ -68,17 +70,17 @@ Once your article is published, some members of the community might need assista
 
 ## Content requirements
 
-**General requirements**
+### General requirements
 
-- Your submission must be an original and NOT a work that was previously published.
+- Your submission **must be an original and NOT a work that was previously published.**
 - You must be the rightful intellectual property owner (author) of your submission.
 - Your work can contain relevant external sources, only when referenced accordingly.
 - Content must be provided following the guidelines in this GitHub repository.
 - By submitting the piece, you agree to give Chainstack rights to distribute your content.
 
-**Subject requirements**
+### Subject requirements
 
-- Your submission must take a neutral stance and refrain from promoting other projects.
+- Your submission must take a neutral stance and **refrain from promoting other projects**.
 - Your submission must cover one or more of [Chainstack’s supported protocols](https://chainstack.com/protocols/).
 - Your submission must cover one or more of the following web3 topics:
 
