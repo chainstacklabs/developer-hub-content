@@ -141,6 +141,10 @@ You can promote your projects in your bio, which will be published with the arti
 
 If you have any other questions, you can contact us [on our Discord channel](https://discord.gg/Cymtg2f7pX).
 
+**Can I publish articles under a pseudonym?**
+
+Yes.
+
 ## Additional information
 
 This document is in progress and content requirements might change. Please reach out to the Chainstack team if you have any questions.
