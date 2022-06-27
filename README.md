@@ -1,6 +1,6 @@
-# Chainstack Developer Hub
-
 ![](./dev-hub-banner.jpeg)
+
+# Chainstack Developer Hub
 
 The Chainstack Developer Hub is an initiative that encourages developers to submit articles and tutorials which will be published in the [Chainstack blog](https://chainstack.com/blog/), and **get paid for it**.
 
