@@ -35,7 +35,7 @@ Before starting working on the first draft of your article, **check the [article
 
 To submit the content, fork this repo and **submit a PR with the following changes:**
 
-- All your content will be created in a subfolder inside the corresponding category (`coding-articles`, `info-articles` or `other-articles`). Follow the kebab-case naming convention (eg "my-awesome-article")
+- All your content will be created in a subfolder inside the corresponding category (`coding-articles`, `info-articles` or `other-articles`). Follow the kebab-case naming convention (eg "my-awesome-article").
 - The code will be created inside a `code` subfolder. There must be a `README.md` file with instructions to install dependencies, run the code, etc.
 - All images will stored inside an `images` subfolder.
 - Create an `Article.md` file with the article itself.
@@ -62,7 +62,7 @@ Once the article is ready to be published, we'll schedule it and let you know th
 
 ### 5. Get rewarded
 
-Once your article is published in the blog, you'll get rewarded for it 💰
+Once your article is published in the blog, you'll get rewarded for it. 💰
 
 ### 6. Provide support
 
