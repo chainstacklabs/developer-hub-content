@@ -59,7 +59,11 @@ A decentralized data storage system has low storage and hardware costs. It lower
 Unlike centralized storage systems, which house your data in a limited number of data centers, decentralized storage networks are made up of millions of nodes eager to host your data safely. This gives a large amount of storage bandwidth and reduces storage costs, making it an affordable solution.
 
 ## Decentralized Storage Networks
+Before listing some of the popular storage networks out there, it is important to note that decentralized storage systems are not a new concept. They have been around for quite a while. An example is bit torrent, which is one of the oldest decentralized data storage networks founded in 2001.
 
+The Bit torrent has now evolved into what we now know as Btfs. It is designed to lower storage costs, improve fault tolerance, and prevent government censorship.
+
+Now that we've noted that, let's proceed to list some of the popular file system storage:
 ### IPFS
 
 InterPlanetary File System (IPFS), developed by Protocol Labs, is a decentralized protocol for storing and accessing data such as files, websites, and applications. The files are stored inside IPFS objects, and these objects can store up to 256kb worth of data.
