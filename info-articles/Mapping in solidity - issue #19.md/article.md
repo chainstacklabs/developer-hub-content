@@ -183,6 +183,7 @@ For instance, if the mapping value is 3 and you update it to 13, the total value
 ```
 function updatingMapping() external{
        theBalanceOf[msg.sender] += 13 ether;
+       }
 ```
 But you need to note an important fact: you cannot update the mapping of a value you have not set.
 
@@ -207,6 +208,7 @@ There is a slight variation when you have strings of arrays as the value type of
  
       function getArrays(uint theKey) public view returns(string[] memory){
         return theArrays[theKey];
+      }
       }
 ```
 In the `setArray function`, we defined the key and the strings in the array, and we also set them to memory because we will be using them locally and temporarily.
