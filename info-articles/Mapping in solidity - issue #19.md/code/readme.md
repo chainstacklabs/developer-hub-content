@@ -14,6 +14,6 @@ You can access it here [Remix](https://remix.ethereum.org/#optimize=false&runs=2
 
 You will need Hardhat for the compiling and deployment. Run this on your terminal
 ```
-nvm install latest
+npm install — save-dev hardhat
 ```
 
