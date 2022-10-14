@@ -88,6 +88,7 @@ In implementations such as ERC-20, addresses can allow or approve the address th
 mapping(address => mapping(address => uint)) public allowance; 
 ```
 The mapping above is a nested one that involves two sets of addresses where one allows or approves the other to take a specific action.
+
 3. ### Identifying owners
 There are instances when you will need to track the owners of some IDs in ERC-721. This is how to do it:
 ```
@@ -165,6 +166,14 @@ In the former case, Solidity will return the value you set to it. But for unset 
       uint bal13 = theBalanceOf[address(13)];
     }
 ```
+
+Having said that, another way to get the value of a mapping is by calling a getter function. With this method, you do not necessarily need to assign the mapping to a new varibale. For instance:
+```
+ function getmapping() public view returns(uint){
+      return theBalanceOf[msg.sender];
+    }
+```
+
 ### Updating Mapping
 You may need to work with the current state of mapping, whether you would like to increase or decrease it. Thus, you have to update the mapping.
 
@@ -183,6 +192,7 @@ Perhaps you want to get rid of the value in a mapping, you can clear it by using
  function clearingMapping() external{
       delete theBalanceOf[address(13)];
       delete theBalanceOf[msg.sender];
+      }
 ```
 
 ## How to Work with Arrays in Mapping
@@ -362,17 +372,19 @@ Since we have learned much about mapping, let us create a simple contract and us
 
 This contract is a simple wallet contract where users can deposit, transfer, and know the remaining Ethers in the contract. Here, we used mapping to track both balances and allowance.
 
-The next stage is to compile and deploy this contract using Hardhat. Perhaps you have not installed Hardhat in your terminal; paste this on your terminal:
+The next stage is to compile and deploy this contract using Hardhat. Go to the Hardhat folder on your device, locate the src folder and write your contract there. Perhaps you have not installed Hardhat in your terminal, paste this on your Vs Code terminal:
 ```
-nvm install latest
+npm install — save-dev hardhat
+```
+Then paste this:
+```
+npm install --save-dev "@nomiclabs/hardhat-ethers@^2.0.0"
 ```
 For the compilation, run this command:
 ```
 npx hardhat compile
 ```
-Bear in mind that you should not have put on the auto-compile option on Remix. Or else, the CLI will return that there is nothing to compile.
-
-Once that is successful, deploy it to your favorite testnet using the Chainstack Ethereum URL. First, create a file in deploy.js and run this script:
+Once that is successful, the next phase is deployment to your favorite testnet using the Chainstack Ethereum URL. First, you will need to configure your hardhat. Therefore, locate a hardhat.config file and paste this script. You can create a new one if you could not find it too.
 ```
 require("@nomicfoundation/hardhat-toolbox");
 
@@ -386,14 +398,23 @@ module.exports = {
 
    goerli: {
 
-     url: `https://eth-goerli.alchemyapi.io/v2/${Chainstack_API_KEY}`,
+     url: `https://eth-goerli.chainstackapi.io/v2/${Chainstack_API_KEY}`,
+          // simply add your Chainstack URL here
 
-     accounts: [Mumbai_PRIVATE_KEY]
+     accounts: [GOERLI_PRIVATE_KEY]
    }
 
  }
 
 };
+```
+The final step is to write a deployment script. Create a deploy.js file where you will write your deployment script - you can choose either Javascript or Typescript. When you are done, start a node:
+```
+npx hardhat node
+```
+Then you can deploy to a testnet:
+```
+npx hardhat run scripts/deploy.js --network goerli
 ```
 
 Congratulations, you have written a contract with mapping; compiled and deployed it to Goerli with Hardhat!
