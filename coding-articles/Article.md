@@ -5,7 +5,7 @@
 
  <img src="images/tom-and-jerry.png" style="width:100%;height:350px"/>           
 
-<div style="text-align:center">Just deploy the bot and wait!</div>
+<div style="text-align:center">Just run the bot and wait!</div>
 
 ## Prerequisites
 - Solidity basics
@@ -23,7 +23,6 @@
   - Configure forta.config.json 
   - Command lines to monitor starting from a specific block/tx hash.
 - Test locally
-- Deploy the bot
 
 ## What Are We Going To Do Exactly?
 We have a "Deposit.sol" smart contract. Any account can deposit MATIC on it. The Forta bot will:
@@ -103,13 +102,13 @@ In my case, I will add Mumbai Testnet network. And show you how to add multiple 
 To do this, I will edit two files.
 
 
-First file `package.json` Replace "1" Ethereum Mainnet chain Id with "8001" Mumbai network chain Id
+First file `package.json` Replace "1" Ethereum Mainnet chain Id with "80001" Mumbai network chain Id
 ```
 "chainIds": [
    80001
 ],
 ```
-Second file `forta.config.json` this file is not created by default, so you need to create it on the root folder
+Second file `forta.config.json` you shouldn't push it on Github for confidential values. It is already included on the `.gitignore`
 ```
 nano forta.config.json
 ````
@@ -117,7 +116,7 @@ nano forta.config.json
 Inside the file, put the JSON RPC URL for your Blockchain network
 ```
 {
-"jsonRpcUrl": "https://polygon-mumbai.g.alchemy.com/v2/<Your key>"
+"jsonRpcUrl": "https://nd-123-456-789.p2pify.com/<Your Chainstack API Key>"
 }
 ```
 Now you have your bot listening to the Mumbai network to test run
@@ -211,6 +210,7 @@ export default {
 ```
 Now in `src/agent.ts` you should have something like this
 ```
+import ethers from "forta-agent";
 import { NetworkManager } from "forta-agent-tools";
 import { NetworkData, networkData } from "./network";
 const networkManager = new NetworkManager(networkData);
@@ -247,6 +247,9 @@ The event ABI, We need the event abi to be able to catch it when it triggers
 ```
 // below getEthersProvider import
 import { Interface } from "@ethersproject/abi";
+
+const provider = getEthersProvider();
+
 const EVENT_ABI: string[] = ["event Deposited(uint256 amount)"];
 const EVENTS_IFACE: Interface = new Interface(EVENT_ABI);
 export default {
@@ -314,6 +317,15 @@ const createFinding = ({
       depositedAmount,
     },
   });
+
+
+  export default {
+      provider,
+      EVENT_ABI,
+      EVENTS_IFACE,
+      createFinding, // add create finding
+  };
+
 };
 ```
 
@@ -558,20 +570,6 @@ const txEvent = new TestTransactionEvent()
   });
 });
 ```
-
-And that's it. Now you are ready for deployment
-
-## Deploy Your Bot
-Just run
-
-```
-   npm run push
-```
-And make sure you have docker installed on your device, and you should see something like this.
-
-![deploy-output](./images/deploy-output.png)
-
-Now you have the bot image! Go to [the deploy agent](https://app.forta.network/deploy-agent) page in Forta app, add the output in `Docker Image` input and submit the deployment transaction.
 
 And that's it! Thank you.
 
