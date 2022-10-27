@@ -417,7 +417,7 @@ And that's it. Now your [bot](./code/src/agent.ts) is ready to use, just run
 ```
 npm start
 ```
-Go to the smart contract and [deposit](https://mumbai.polygonscan.com/address/0xA87db9fe057CFF6E296586BeC6a6982A5a9B44b0#writeContract). Get [faucet token](https://mumbaifaucet.com/) if you don't have one.
+Go to the smart contract and [deposit](https://mumbai.polygonscan.com/address/0xA87db9fe057CFF6E296586BeC6a6982A5a9B44b0#writeContract). Get [faucet token](https://faucet.polygon.technology/) if you don't have one.
 
 Or you can test by asking your bot to listen to a specific transaction using this command.
 
