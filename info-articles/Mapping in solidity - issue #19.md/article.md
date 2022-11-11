@@ -374,13 +374,13 @@ Since we have learned much about mapping, let us create a simple contract and us
 
 This contract is a simple wallet contract where users can deposit, transfer, and know the remaining Ethers in the contract. Here, we used mapping to track both balances and allowance.
 
-The next stage is to compile and deploy this contract using Hardhat. Go to the Hardhat folder on your device, locate the src folder and write your contract there. Perhaps you have not installed Hardhat in your terminal, paste this on your Vs Code terminal:
+The next stage is to compile and deploy this contract using Hardhat. Go to the Hardhat folder on your device, locate the contracts folder and write your contract there. Perhaps you have not installed Hardhat in your terminal, paste this on your Vs Code terminal:
 ```
-npm install — save-dev hardhat
+npm install --save-dev hardhat
 ```
-Then paste this:
+Then paste this to create a new hardhat project:
 ```
-npm install --save-dev "@nomiclabs/hardhat-ethers@^2.0.0"
+ npx hardhat
 ```
 For the compilation, run this command:
 ```
@@ -410,11 +410,8 @@ module.exports = {
 
 };
 ```
-The final step is to write a deployment script. Create a deploy.js file where you will write your deployment script - you can choose either Javascript or Typescript. When you are done, start a node:
-```
-npx hardhat node
-```
-Then you can deploy to a testnet:
+The final step is to write a deployment script. Create a deploy.js file where you will write your deployment script - you can choose either Javascript or Typescript. 
+Then you can deploy to a testnet. But before doing that, you wouold have to write a deploy script that is specific to your contract:
 ```
 npx hardhat run scripts/deploy.js --network goerli
 ```
