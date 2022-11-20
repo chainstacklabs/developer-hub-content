@@ -1,0 +1,17 @@
+{
+  "name": "swappairs",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ swappairs",
+    "create-local": "graph create --node http://localhost:8020/ swappairs",
+    "remove-local": "graph remove --node http://localhost:8020/ swappairs",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 swappairs",
+    "deploy-hosted-service": "graph deploy --product hosted-service yehia67/swappairs"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.30.4",
+    "@graphprotocol/graph-ts": "0.27.0"
+  }
+}

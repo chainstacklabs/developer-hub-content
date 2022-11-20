@@ -1,0 +1,11 @@
+type CreatedPair @entity {
+  id: ID! # transaction hash
+  token0: Token!
+  token1: Token!
+  timestamp: BigInt!
+}
+
+type Token @entity {
+  id: ID! # contract address
+  name: String!
+}

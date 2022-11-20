@@ -6,9 +6,6 @@
 
 /node_modules
 node_modules
-coding-articles/yehia-article-thegraph/code/frontend/node_modules/    
-coding-articles/yehia-article-thegraph/code/frontend/node_modules/    
-cd coding-articles/yehia-article-thegraph/code/subgraph/node_modules/ 
 ./code/
 /.pnp
 .pnp.js

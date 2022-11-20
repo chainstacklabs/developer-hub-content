@@ -1,0 +1,26 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SwapPairs
+    network: mainnet
+    source:
+      address: "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"
+      abi: SwapPairs
+      startBlock: 10091443
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - PairCreated
+      abis:
+        - name: SwapPairs
+          file: ./abis/SwapPairs.json
+        - name: Erc20
+          file: ./abis/Erc20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: ./src/swap-pairs.ts
