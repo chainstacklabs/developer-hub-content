@@ -15,7 +15,7 @@ const tokenNames =
                       }))
 ```
 
-If the `tokenAddresses` array length is ten. You have to do ten calls to the blockchain!! Of course number of addresses increase, ⬆ ️mean the number of calls increases ⬆, Which makes your frontend app slow.
+Suppose the `tokenAddresses` array length is ten. You have to do ten calls to the blockchain!! Of course number of addresses increase, ⬆ ️mean the number of calls increases ⬆, Which makes your frontend app slow.
 
 How to handle this? How DeFi protocols like Uniswap handle this?
 The answer is The graph protocol!
@@ -63,7 +63,7 @@ The first thing on the left is the default query.
 }
 ```
 
-Press run button. Then we have the output.
+Press the run button. Then we have the output.
 
 ```
 "data": {
@@ -77,8 +77,8 @@ Press run button. Then we have the output.
 ....
 ```
 
-The above output is the same one you receive when doing HTTP calls from your web app. 
-The object will structure will look like
+The above output is the same as receiving HTTP calls from your web app. 
+The object will look like
 
 ```
 data->pairs->[id]
@@ -95,7 +95,7 @@ Assume you want to get all available pairs of tokens by the symbol.
 Example: ETH-USDC, APE-USDT…etc
 
 <figure>
-  <img src="./images/schema.png" alt="All schema names and properties are listed on the left">
+  <img src= "./images/schema.png" alt=" All schema names and properties are listed on the left">
   <figcaption>All schema names and properties are listed on the left</figcaption>
 </figure>
 To fetch the available pairs, we need to select the Pair schema. The third one on the above image 👆)
@@ -104,14 +104,14 @@ To fetch the available pairs, we need to select the Pair schema. The third one o
   <figcaption>Pair schema properties</figcaption>
 </figure>
 
-We to fetch symbols of tokens pair, so we care only about `token0` and `token1` there type `Token!` and the `!` mark at the end means this property is required. We know [BigDecimal](https://thegraph.com/docs/en/developing/assemblyscript-api/#big-decimal) type and ID type, but what is `Toke`n type? A token is a customized type. Let's check this to understand.
+We fetch symbols of tokens pair, so we care only about `token0` and `token1`. Their type `Token!` and the `!` mark at the end means this property is required. We know [BigDecimal](https://thegraph.com/docs/en/developing/assemblyscript-api/#big-decimal) type and ID type, but what is the Token type? A token is a customized type. Let's check this to understand.
 
 <figure>
   <img src="./images/token_schema.png" alt="The Token schema">
   <figcaption>The Token schema</figcaption>
 </figure>
 
-It is another schema, and schemas are linked to each other by including schema name as a type inside another schema like this.
+It is another schema, and schemas are linked to each other by including Its name as a type inside another schema like this.
 
 ```
 type Pair{
@@ -119,7 +119,7 @@ type Pair{
 }
 ```
 
-Return to what we need; We want to query all available pairs of symbol. So we select the Pair schema
+Return to what we need; We want to query all available symbol pairs. So we select the Pair schema.
 
 ```
 pairs{
@@ -136,7 +136,7 @@ pairs{
 }
 ```
 
-Select `symbol` property from the tokens
+Select the `symbol` property from the tokens
 
 ```
 pairs{
@@ -175,7 +175,7 @@ Put this query on the subgraph studio, and the result should be something like t
 ```
 
 And that's it. We can play around with different queries
-Like search for all pairs with total supply greater than 10K
+Like the search for all pairs with a total supply greater than 10K
 
 ```
 {
@@ -203,7 +203,7 @@ cd next-app
 yarn add @apollo/client
 ```
 
-It is the most famous client for GraphQl. In general, you can read more about it [here](https://www.apollographql.com/docs/react/data/queries/).
+It is the most famous client for GraphQl. You can generally read more about it [here](https://www.apollographql.com/docs/react/data/queries/).
 We will use the same query and assign it to a constant variable.
 
 ```
@@ -231,7 +231,7 @@ Initialize the client globally,
 // create apolloClient.ts inside frameworks
 // frameworks/apolloClient.ts
 import { ApolloClient, DefaultOptions, InMemoryCache } from "@apollo/client";
-// For simple example we don't need cache
+// For a simple example, we don't need cache
 const defaultOptions: DefaultOptions = {
   watchQuery: {
     fetchPolicy: "no-cache",
@@ -277,7 +277,7 @@ import apolloClient from "frameworks/apolloClient.ts"
 import pairSymbolsQuery from "constants/queries.qgl.ts"
 ```
 
-Do the api call inside a `useEffect` hook
+Do the API call inside a `useEffect` hook.
 
 ```
 // .... Some Code .....
@@ -293,7 +293,7 @@ useEffect(()=>{
 },[])
 ```
 
-Now run your project `yarn dev` and check the console. You should see the same query result from the graph studio
+Now run your project `yarn dev` and check the console. You should see the same query result from graph studio.
 
 <figure>
   <img src="./images/console_output.png" alt="uniswap deployed on the graph studio">
@@ -301,17 +301,17 @@ Now run your project `yarn dev` and check the console. You should see the same q
 </figure>
 
 Apollo clients have multiple hooks to [query](https://www.apollographql.com/docs/react/data/queries), [fetch](https://www.apollographql.com/docs/react/data/queries), and [cache](https://www.apollographql.com/docs/react/data/queries). Feel free to play around with them.
-Apollo client also support variables inside queries for example
+Apollo clients also support variables inside queries, for example.
 
 ```
 await apolloClient.query({
           query: pairSymbolsQuery
-          variables: { totalSupply: "1000" },
+          variables: { totalSupply: "1000"},
        })
 
 ```
 
-To identify a variable inside a query you need only to start it with `$` like `$totalSupply` variable
+To identify a variable inside a query, you need only to start it with `$` like the `$totalSupply` variable.
 
 ```
    query getTotalSupplyGt($totalSupply: BigDecimal) {
@@ -326,7 +326,7 @@ You can connect your frontend with any subgraph on the graph studio. Just copy t
 
 ## Build Your Subgraph To Catch All Pairs Of Token Names Initialized For Swap
 
-Before start implementing, The subgraph is defined by mainly three components
+Before starting implementing, The subgraph is defined by mainly three components.
 
 - Schema
 - mapper
@@ -334,7 +334,7 @@ Before start implementing, The subgraph is defined by mainly three components
 
 ### Schema
 
-`schema.graphql` The schema file should define the data that you want to fetch. For example, if you're fetching token data, the token entity should look like this.
+`schema.graphql` The schema file should define the data you want to fetch. For example, if you're fetching token data, the token entity should look like this.
 
 ```
 type Token @entity {
@@ -346,9 +346,9 @@ type Token @entity {
 }
 ```
 
-### mapper
+### Mapper
 
-Inside `src/` or `mapping/` you add the handler function. Handler functions are functions that trigger once an event has been called example
+Inside `src/` or `mapping/` you add the handler function. Handler functions trigger once an event has been called, for example.
 
 ```
 // PairCreated is an event inside the smart contract
@@ -359,7 +359,7 @@ export function handlePairCreated(event: PairCreated): void {
 
 ### YAML file
 
-`subgraph.yaml` map handlers to the event. For example, to make the above handler work, we will link it with the event inside subgraph.yml this way
+`subgraph.yaml` map handlers to the event. For example, to make the above handler work, we will link it with the event inside subgraph.yml this way.
 
 ```
 eventHandlers:
@@ -401,8 +401,8 @@ After installing, you should now access the project from your code editor.
   <img src="./images/project_root.png" alt="Initialize graph output">
 </figure>
 
-Start with the entities inside schema.graphql and put the data you need to
-First schema is the `Token` it will be simple we need only the contract address and the token name
+Start with the entities inside `schema.graphql` and put the data you need to
+The first schema is the `Token`. It will be simple. We need only the contract address and the token name
 
 ```
 type Token @entity {
@@ -411,7 +411,7 @@ type Token @entity {
 }
 ```
 
-Second schema is the `CreatedPairs` its the two pair of tokens details, the transaction hash and the timestamp.
+The second schema is the `CreatedPairs`. Its the two pairs of tokens details, the transaction hash and the timestamp.
 
 ```
 type CreatedPair @entity {
@@ -422,15 +422,15 @@ type CreatedPair @entity {
 }
 ```
 
-Schema file is ready you can check it on [src/schema.graphql](code/subgraph/schema.graphql) last thing is to generate the schema entities by running
+The schema file is ready. You can check it on [src/schema.graphql](code/subgraph/schema.graphql). The last thing is to generate the schema entities by running
 
 ```
 yarn codegen
 ```
 
-command I will explain it in details later.
+The command I will explain it in detail later.
 
-Lets do the logic now that
+Let's do the logic now.
 Go to [src/swap-pairs.ts](code/subgraph/schema.graphql) delete everything inside the file
 
 Import the schema file
@@ -449,14 +449,14 @@ export function handlePairCreated(event: PairCreated): void {
 }
 ```
 
-Inside the `handlePairCreated` function lets initialize the entity for `CreatedPair`
+Inside the `handlePairCreated` function, let's initialize the entity for `CreatedPair`
 
 ```
   // Inside handlePairCreated
   let createdPair = new CreatedPair(event.transaction.hash.toHexString());
 ```
 
-the entity take the schema ID as parameter `new CreatedPair(<transaction hash>)`.
+The entity takes the schema ID as parameter `new CreatedPair(<transaction hash>)`.
 
 Assign values to the schema properties
 
@@ -474,7 +474,7 @@ go to [abis/](./code/subgraph//abis/) and add [Erc20.json](./code/subgraph/abis/
 yarn codegen
 ```
 
-That's all now. All initialize the ERC20 smart contract object
+That's all now. All initialize the ERC20 smart contract object.
 
 ```
   // In src/swap-pairs.ts inside hanldePaireCreated
@@ -486,7 +486,7 @@ That's all now. All initialize the ERC20 smart contract object
 A good practice when calling any external call is using `try_<query>` to avoid throwing errors. Something like this
 
 ```
-// After initializing the contract object
+// After initializing the contract object,
 if (tokenOContract.try_name().reverted) {
     log.error("token0 name not found {}", [
       event.transaction.hash.toHexString()
@@ -501,7 +501,7 @@ if (tokenOContract.try_name().reverted) {
   }
 ```
 
-If reading the contract name revert or gives any failure message, you can stop saving this token or add it with the default value "Unkown". In our case, I will only log the message with the error and the transaction hash to debug what may happen. Btw the logger is from [@graphprotocol/graph-ts](https://www.npmjs.com/package/@graphprotocol/graph-ts). Feel free to check their documentation
+If reading the contract name revert or gives any failure message, you can stop saving this token or add it with the default value "Unkown". In our case, I will only log the message with the error and the transaction hash to debug what may happen. The logger is from [@graphprotocol/graph-ts](https://www.npmjs.com/package/@graphprotocol/graph-ts). Feel free to check their documentation
 The next step is to load the token schema if it exists or create a new one.
 
 ```
@@ -539,12 +539,12 @@ For simplicity's sake, the token entity has only the token name as the property,
   }
 ```
 
-Now you have created two token entities or imported them if the token was used before from another pair. To link entities with each other, you need to add a link by Id, like this
+Now you have created two token entities or imported them if The token already exists from another pair. To link entities with each other, you need to add a link by Id, like this
 
 ```
   createdPair.token0 = event.params.token0.toHexString();
   createdPair.token1 = event.params.token1.toHexString();
-  // Don't forget to save the createdPair entity
+  //Don't forget to save the createdPair entity
   createdPair.save();
 ```
 
@@ -571,10 +571,10 @@ build: after executing codgen the command, the subgraph will build to check if y
 
 The remaining three commands are for local deployments. To query blockchain running on your localhost like ganache. In this tutorial, I will focus on the graph studio and blockchain on the mainnet. If you are interested in building a subgraph for your localhost blockchain, I recommend [this tutorial](https://thegraph.academy/developers/local-development/) from the [graph academy](https://thegraph.academy/).
 
-To connect your subgraph with the subgraph studio, use this command. You need to run it only once to authenticate your graph
+To connect your subgraph with the subgraph studio, use this command. You need to run it only once to authenticate your graph.
 
 ```
-  graph auth --studio <Deploy-key-You-will-findit-as-access-Token>
+  graph auth --studio <Deploy-key-You-will-find-it-as-access-Token>
 ```
 
 To deploy
@@ -583,7 +583,7 @@ To deploy
   graph deploy --product hosted-service <your-username/project-name>
 ```
 
-In our case, I will add this command to the scripts object
+In our case, I will add this command to the script object.
 
 ```
 # After remove-local command
@@ -649,7 +649,7 @@ You should have something like this.
   <img src="./images/hasura.png" alt="Initialize graph output">
 </figure>
 
-That's all, Thank you!
+That's all. Thank you!
 
 ## References
 
