@@ -83,7 +83,7 @@ This is a system that allows users to send their transaction via a private mempo
 
 An example is the TAICHI NETWORK, they allow users to send their transactions via Sparkpool which is their private mempool;
 
-Source - https://www.mev.wiki/solutions/faas-or-meva/private-transactions
+
 
 
 
