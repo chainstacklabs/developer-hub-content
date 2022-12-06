@@ -453,6 +453,10 @@ export function handlePairCreated(event: PairCreated): void {
 Inside the `handlePairCreated` function, let's initialize the entity for `CreatedPair`
 
 ```
+// At the top of the file
+import { CreatedPair } from "../generated/schema";
+
+// some code
   // Inside handlePairCreated
   let createdPair = new CreatedPair(event.transaction.hash.toHexString());
 ```
