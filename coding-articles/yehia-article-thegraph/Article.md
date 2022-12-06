@@ -224,11 +224,9 @@ const pairSymbolsQuery = gql`
 `;
 ```
 
-Initialize the client globally,
+Initialize the client globally,create `apolloClient.ts` inside frameworks directory `frameworks/apolloClient.ts`
 
 ```
-// create apolloClient.ts inside frameworks
-// frameworks/apolloClient.ts
 import { ApolloClient, DefaultOptions, InMemoryCache } from "@apollo/client";
 // For a simple example, we don't need cache
 const defaultOptions: DefaultOptions = {
