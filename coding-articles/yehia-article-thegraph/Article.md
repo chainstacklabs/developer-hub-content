@@ -256,6 +256,9 @@ You can find the two files here:
 Then go to the [pages/index.tsx](./code/frontend/pages/index.tsx) and wrap your application with ApolloProvider and the initialized client
 
 ```
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "../frameworks/apolloClient";
+
 <ApolloProvider client={apolloClient}>
      <!-- Your App -->
 </ApolloProvider>
