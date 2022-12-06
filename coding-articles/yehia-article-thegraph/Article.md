@@ -32,7 +32,7 @@ And that's it; you get all queries with only one call! The graph makes your code
 
 - Nodejs basics and package manager (npm/yarn) [basics](https://nodejs.dev/en/learn/introduction-to-nodejs/)
 - [Promise](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises) basics.
-- [Async functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). 
+- [Async functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 - Frontend basics would be nice to have. [React tutorial](https://reactjs.org/tutorial/tutorial.html)
 
 ## Agenda
@@ -139,13 +139,15 @@ pairs{
 Select the `symbol` property from the tokens
 
 ```
-pairs{
-   token0{
-     symbol
-   }
-   token1{
-     symbol
-   }
+{
+  pairs{
+    token0{
+      symbol
+    }
+    token1{
+      symbol
+    }
+  }
 }
 ```
 
