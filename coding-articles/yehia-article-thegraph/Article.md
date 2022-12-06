@@ -206,12 +206,9 @@ yarn add @apollo/client
 ```
 
 It is the most famous client for GraphQl. You can generally read more about it [here](https://www.apollographql.com/docs/react/data/queries/).
-We will use the same query and assign it to a constant variable.
+We will use the same query and assign it to a constant variable. Create this new directory for all constant values `constants/` and inside `constants/` add queries file `constants/queries.qgl.ts`
 
 ```
-// create a constant directory and add this code inside it
-// constants/queries.qgl.ts
-
 import gql from "@apollo/client";
 const pairSymbolsQuery = gql`
   {
