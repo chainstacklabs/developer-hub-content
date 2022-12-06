@@ -478,7 +478,13 @@ createdPair.timestamp = event.block.timestamp;
 We need to get the two pairs of tokens' names. Unfortunately, the event includes the address of the tokens only, not their names. So we need to read from the smart contract the token name.
 To do this first, let's import ERC20 smart contract ABIs
 
-go to [abis/](./code/subgraph//abis/) and add [Erc20.json](./code/subgraph/abis/Erc20.json) abi file, then write on your terminal/cmd
+To do this first, let's import ERC20 smart contract ABIs
+
+ABI is the smart contract interface and the only way to interact with your smart contract from code. You can read more about it [here](https://docs.soliditylang.org/en/v0.8.16/abi-spec.html#basic-design).
+
+You can get any ABI from the blockchain explorer. In our case we need an ERC20 contract [ABI](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7#code)
+
+I already downloaded it. Go to [abis/](./code/subgraph/abis/) and add [Erc20.json](./code/subgraph/abis/Erc20.json) abi file, then write on your terminal/cmd
 
 ```
 # inside the project directory
@@ -488,6 +494,9 @@ yarn codegen
 That's all now. All initialize the ERC20 smart contract object.
 
 ```
+  // At the top of the file
+  import { Erc20 } from "./../generated/SwapPairs/Erc20";
+  // some code...
   // In src/swap-pairs.ts inside hanldePaireCreated
   // After assigning the timestamp
   const tokenOContract = Erc20.bind(event.params.token0);
@@ -516,6 +525,12 @@ If reading the contract name revert or gives any failure message, you can stop s
 The next step is to load the token schema if it exists or create a new one.
 
 ```
+  // At the top of the file
+  import { CreatedPair, Token } from "../generated/schema";
+  // some code...
+  // In src/swap-pairs.ts inside hanldePaireCreated
+  // After assigning the timestamp
+
   let token0 = Token.load(event.params.token0.toHexString());
   let token1 = Token.load(event.params.token1.toHexString());
 ```
