@@ -209,7 +209,7 @@ It is the most famous client for GraphQl. You can generally read more about it [
 We will use the same query and assign it to a constant variable. Create this new directory for all constant values `constants/` and inside `constants/` add queries file `constants/queries.qgl.ts`
 
 ```
-import gql from "@apollo/client";
+import { gql } from "@apollo/client";
 const pairSymbolsQuery = gql`
   {
     pairs {
