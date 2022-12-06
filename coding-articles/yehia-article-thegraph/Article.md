@@ -381,7 +381,7 @@ Now you understand the three primary files to create a subgraph; you can start b
 yarn global add @graphprotocol/graph-cli
 ```
 
-Create a directory and initialize the project
+Create a directory and initialize the project outside the frontend app
 
 ```
 # Inside the project directory
