@@ -210,7 +210,7 @@ We will use the same query and assign it to a constant variable. Create this new
 
 ```
 import { gql } from "@apollo/client";
-const pairSymbolsQuery = gql`
+export const pairSymbolsQuery = gql`
   {
     pairs {
       token0 {
