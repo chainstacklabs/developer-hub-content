@@ -53,7 +53,7 @@ Uniswap subgraph is deployed on [the graph studio](https://thegraph.com/hosted-s
   <figcaption align="center">The Graph Studio Playground</figcaption>
 </figure>
 
-The first thing on the left is the default query.
+The first thing on the left is the default query. The default query returns all created `Pair` smart contract addresses.
 
 ```
 {
