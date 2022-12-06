@@ -280,6 +280,7 @@ import pairSymbolsQuery from "constants/queries.qgl.ts"
 Do the API call inside a `useEffect` hook.
 
 ```
+import { useEffect } from "react";
 // .... Some Code .....
 // Inside component
 useEffect(()=>{
