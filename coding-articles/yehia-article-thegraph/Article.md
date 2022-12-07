@@ -122,17 +122,21 @@ type Pair{
 Return to what we need; We want to query all available symbol pairs. So we select the Pair schema.
 
 ```
-pairs{
+{
+  pairs{
 
+  }
 }
 ```
 
 Inside the pair schema select `token0` and `token1` properties
 
 ```
-pairs{
-   token0{}
-   token1{}
+{
+  pairs{
+    token0{}
+    token1{}
+  }
 }
 ```
 
