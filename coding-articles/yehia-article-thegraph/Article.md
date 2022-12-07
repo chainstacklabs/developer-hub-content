@@ -582,7 +582,7 @@ And that's it. You can check the file [here](./code/subgraph/src/swap-pairs.ts)
 
 ## Deploy Your Subgraph
 
-go to [package.json](./code/subgraph/package.json) file and check the available scripts
+go to [package.json](./code/subgraph/package.json) file and check the available scripts. On scripts property you can all commands to be executed on your nodejs project locally you can read more about it [here](https://docs.npmjs.com/misc/scripts/)
 
 ```
 "scripts": {
