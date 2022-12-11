@@ -410,8 +410,29 @@ module.exports = {
 
 };
 ```
-The final step is to write a deployment script. Create a deploy.js file where you will write your deployment script - you can choose either Javascript or Typescript. 
-Then you can deploy to a testnet. But before doing that, you wouold have to write a deploy script that is specific to your contract:
+The final step is to write a deployment script. Create a deploy.js file where you will write your deployment script, paste this there:
+```
+const hre = require("hardhat");
+
+async function main() {
+  const Contract = await hre.ethers.getContractFactory("MappingLesson");
+  console.log("Deploying your contract, please Wait.....");
+  const contractDeploy = await Contract.deploy();
+  await contractDeploy.deployed();
+
+  console.log("Mapping contract deployed to:", contractDeploy.address);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+What we did here was simple. We created a function main, which will create the object of our contract from the artifact folder of its ABI. Then we called the deploy function on that object that will deploy the contract to whatever network we will specify subsequently.
+
+Now, command the deploy script to run
 ```
 npx hardhat run scripts/deploy.js --network goerli
 ```
