@@ -488,7 +488,50 @@ ABI is the smart contract interface and the only way to interact with your smart
 
 You can get any ABI from the blockchain explorer. In our case we need an ERC20 contract [ABI](https://etherscan.io/token/0xdac17f958d2ee523a2206206994597c13d831ec7#code)
 
-I already downloaded it. Go to [abis/](./code/subgraph/abis/) and add [Erc20.json](./code/subgraph/abis/Erc20.json) abi file, then write on your terminal/cmd
+I already downloaded it. Go to [abis/](./code/subgraph/abis/) and add [Erc20.json](./code/subgraph/abis/Erc20.json) abi file,
+
+After adding any new Abi, you need to include it inside `subgraph. yaml`.
+Inside `mapping` properties, you will find an `abis` object, including your abi.
+
+```
+- name: Erc20
+  file: ./abis/Erc20.json
+```
+
+Why do we do this? Because the subgraph generates some typescript classes from the ABI.json to use them inside your handlers.
+In `subgraph.yaml`, you should also map the event with the handler at the end of the file. After the `abis` property, you should have `eventHandlers` object.
+
+```
+ eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: ./src/swap-pairs.ts
+```
+
+the above property links the event `PairCreated` with handler `handlePairCreated` and specifies the location inside `./src/swap-pairs.ts`
+you should have something like that(most of this file should be auto-generated)
+
+```
+  mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+  entities:
+        - PairCreated # The entity used inside the schema.graphql
+    abis:
+        - name: SwapPairs
+          file: ./abis/SwapPairs.json
+        - name: Erc20
+          file: ./abis/Erc20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: ./src/swap-pairs.ts
+```
+
+You can check the full file [here](./code/subgraph/subgraph.yaml)
+
+Then write on your terminal/cmd
 
 ```
 # inside the project directory
