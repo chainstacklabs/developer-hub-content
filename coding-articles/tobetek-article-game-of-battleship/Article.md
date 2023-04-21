@@ -16,6 +16,9 @@ There are multiple approaches to privacy on the blockchain thus far. One particu
 
 We need to a create a unique identifier for each players ship's coordinate that would be impossible to guess/reverse by anybody else, but which can be verified in the future, to reveal the initial data (ship's coordinate). We need a [one-way function]()! Public-private signatures are a perfect match for this use case.
 
+Public-private signatures, are also known as digital or cryptographic signatures. It is the same technology behind authorizing transactions on the blockchain. We sign an arbitary byte of data (a ship coordinate in this case) with our private key, and this generates a signature. We can then retrieve the corresponding public key/address of a signature and confirm if it matches the expected value.Signing a message with a private key is deterministic, meaning signing the same data with the same private key will always produce the same signature.
+
+Here's a brief overview of how it all fits together:
 - _Player1_ signs their ship coordinates and we store those signatures in our smart contract.
 - _Player2_ declares which coordinates they've shot at.
 - _Player1_ signs all the "shot" coordinates, and we check if such a signature exists in our smart contract. No? That was a miss. Yes? A ship has been hit!
@@ -69,13 +72,63 @@ and install [Hardhat](https://hardhat.org/tutorial/creating-a-new-hardhat-projec
 npm install --save-dev hardhat
 ```
 
+## Verifying Digital Signatures
+
+Since all signatures created on Ethreum make use of the ECDSA curve, there have been suggestions to have a [native compiled function for verifying signatures](https://eips.ethereum.org/EIPS/eip-665). However, that's not yet available, and we have to roll our own solution.
+
+We need a smart contract to derive the corresponding address of the public key used to create the digital signature. We'll be using the SigVerifier contract from the official Solidity documentation with some modifications.
+
+
+```js
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity ^0.8.0;
+
+contract SigVerifier {
+    function RecoverSigner(
+        bytes32 _hashedMessage,
+        uint8 _v,
+        bytes32 _r,
+        bytes32 _s
+    ) public pure returns (address) {
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+        bytes32 prefixedHashMessage = keccak256(
+            abi.encodePacked(prefix, _hashedMessage)
+        );
+        address signer = ecrecover(prefixedHashMessage, _v, _r, _s);
+        return signer;
+    }
+
+    function SplitSignature(
+        bytes memory sig
+    ) public pure returns (uint8 v, bytes32 r, bytes32 s) {
+        require(sig.length == 65, "Invalid Signature");
+
+        assembly {
+            // first 32 bytes, after the length prefix.
+            r := mload(add(sig, 32))
+            // second 32 bytes.
+            s := mload(add(sig, 64))
+            // final byte (first byte of the next 32 bytes).
+            v := byte(0, mload(add(sig, 96)))
+        }
+
+        return (v, r, s);
+    }
+}
+
+```
+Digital signatures in Ethereum are based on the ECDSA curve. Each signature contains three parameters, `r`, `s`, and `v`. We can derive these parameters from a signature by splitting it into the requisite number of bytes.
+Retrieving the public address from these parameters is as simple as invoking Solidity's `ecrecover` function.
+This is a relatively costly process and consumes quite a bit of gas compared to normal transactions. To optimize the gas cost, we made use of assembly in our smart contract to split the signature. 
+We could also have split the signature offchain with JavaScript or another programming language.
+
+
 ## The Smart Contract
 
 ```js
 // SPDX-License-Identifier: GPL-3.0-or-later
 pragma solidity ^0.8.10;
 
-import "hardhat/console.sol";
 import "contracts/Verify.sol";
 
 contract BattleShipGame is SigVerifier {
@@ -443,11 +496,21 @@ In brief,
 
  - `generateShipShotProof(player: Signer, allPlayers: Array<string>, battleshipGame: any)` quickly generates a list of proofs for each reported shot coordinate.
 
+To prevent signing arbitrary messages from signing transactions, messages are prefixed with `"\x19Ethereum Signed Message:\n"` + `length of the message`. Taking a look at our SigVerifier contract, we hardcoded the length of the message to be **32**. We do that because we always hash our messages/data, and the length of hashes is always 32 bytes.
 
 
+# Conclusion
+We're finally done! We've built a complete game of incomplete information on a public blockchain. While we've built a game for recreation, these concepts could easily be applied to other ideas and projects. For example, we could create an anonymous NFT marketplace, where the owners of NFTs remain private, but they can verify their identity and sign off on bids.
+
+## Further Reading
+ - [Ethereum Docs - TRANSACTIONS](https://ethereum.org/en/developers/docs/transactions/#whats-a-transaction)
+ - [SMART CONTRACT LANGUAGES - Assembly](https://ethereum.org/en/developers/docs/smart-contracts/languages/#vyper)
+ - [ERC-2098: Compact Signature Representation](https://eips.ethereum.org/EIPS/eip-2098)
+ - [ERC-1271: Standard Signature Validation Method for Contracts](https://eips.ethereum.org/EIPS/eip-1271)
 
 # Improvements
 
 - We don't actually restrict players' ships to a board size. That doesn't seem quite practical. To do this, we'd have to somehow prove the coordinates are valid, without showing anyone. While beyond the scope of this article, it is a valid use case for [ZKPs](a). I created a [circom circuit](https://gist.github.com/TobeTek/788aa89e5a483b5eeb1e7272ee1369f7) that does just that.
 - We could add support for more players. We'd need to add a check to prevent destroyed players from being able to play.
 - Using modifiers in the smart contract for tracking game state (`isTurnOver`, `isGameOver` etc.). I chose plain reverts for simplicity.
+- Our game doesn't yet have a UI. An interactive web UI would be a great addition!
