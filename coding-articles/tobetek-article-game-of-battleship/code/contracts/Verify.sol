@@ -12,14 +12,7 @@ contract SigVerifier {
         bytes32 prefixedHashMessage = keccak256(
             abi.encodePacked(prefix, _hashedMessage)
         );
-        // bytes32 prefixedHashMessage = keccak256(
-        //     prefix, _hashedMessage
-        // );
-        // bytes32 prefixedHashMessage = abi.encode(prefix, _hashedMessage);
-        
         address signer = ecrecover(prefixedHashMessage, _v, _r, _s);
-
-        // address signer = ecrecover(_hashedMessage, _v, _r, _s);
         return signer;
     }
 
