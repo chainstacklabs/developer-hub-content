@@ -2,37 +2,11 @@
 
 ## Introduction
 
-Smart contract auditing is the process of reviewing and evaluating the code of a smart contract to identify potential security vulnerabilities, bugs, and other issues that may impact the contract's functionality. There are two main types of auditing: manual auditing and automated auditing. Manual auditing involves reviewing the code line-by-line and using tools like Slither to identify potential issues. Automated auditing involves using software tools to scan the code and identify potential vulnerabilities. The need to audit smart contracts is critical, as smart contracts are immutable and can cause significant harm if they contain security vulnerabilities. In this project, we will provide an overview of smart contract auditing, with a focus on manual auditing techniques. We will also cover common attack vectors, such as reentrancy, replay attacks, and overflows, and provide code examples and snippets to demonstrate how to use tools like Slither in auditing contracts, as well as how to test and report on identified issues.
+Smart contract auditing is the process of reviewing and evaluating the code of a smart contract to identify potential security vulnerabilities, bugs, and other issues that may impact the contract's functionality. There are two main types of auditing: manual auditing and automated auditing. Manual auditing involves reviewing the code line-by-line and using tools like Slither to identify potential issues. Automated auditing involves using software tools to scan the code and identify potential vulnerabilities. The need to audit smart contracts is critical, as smart contracts are immutable and can cause significant harm if they contain security vulnerabilities.
 
-## What is Smart Contract Auditing?
+In this project, we will provide an overview of smart contract auditing, with a focus on manual auditing techniques. We will also cover common attack vectors, such as reentrancy, replay attacks, and overflows, and provide code examples and snippets to demonstrate how to use tools like Slither in auditing contracts, as well as how to test and report on identified issues.
 
-Smart contract auditing is the procedure of extensively inspecting and examining a smart contract's code to find any security flaws, defects, and other issues that might impair the contract's operation. The purpose of smart contract auditing is to guarantee that the contract works as it should and that the code is safe from malicious attacks and unforeseen outcomes.
-
-Smart contracts are self-executing contracts that are recorded on a blockchain network and operate automatically without the use of intermediaries. They're used to automate operations and make transactions more transparent and safe. Because smart contracts are immutable, they cannot be changed once they are put on the blockchain. This implies that any problems or vulnerabilities in the code will remain, thus a thorough examination and assessment of the code is required before deployment.
-
-## Types of Auditing
-
-Smart contract auditing can be performed manually or through the use of automated tools.
-
-### Manual Auditing
-
-Manual smart contract auditing is a type of assessment method in which the code of a smart contract is manually reviewed to discover any security vulnerabilities, bugs, as well as other issues that may affect its functioning. Manual smart contract auditing aims to give a thorough, human-led evaluation of the contract's code in order to identify security issues and provide recommendations for mitigating those risks.
-
-Manual smart contract auditing involves reviewing the code structure, logic, and comments to understand the contract's purpose, testing the code for security vulnerabilities, using tools like **Slither** to automate some aspects of the process, and documenting the findings of the audit.
-
-### Automated Auditing
-
-The method of automated smart contract auditing involves utilizing software tools to assess the security of smart contracts. The goal of automated auditing is to identify security risks in the smart contract code, including vulnerabilities, flaws, and other problems. Automated auditing employs algorithms and scripts to scan the code and find possible security issues, as opposed to manual auditing, which involves a human reviewing the code line-by-line.
-
-Automated auditing has the benefit of being quicker. It can quickly scan the whole codebase and find a huge number of possible flaws. This is particularly helpful for sophisticated, large-scale smart contract systems.
-
-Automated auditing has the benefit of being quicker and more thorough than manual auditing since it can quickly scan the whole codebase and find a huge number of possible flaws. This is particularly helpful for sophisticated, large-scale smart contract systems.
-
-Automated auditing tools work by examining the code and searching for known-to-be-vulnerable patterns and code snippets. For instance, the tool may look for instances of code that could result in an overflow or underflow or check for the use of certain functions or libraries that have been identified as vulnerable.
-
-A report that shows the problems and offers recommendations on how to fix them will be generated once the automated auditing program has identified possible vulnerabilities.
-
-In this article, our focus will be on manual smart contract auditing.
+The purpose of smart contract auditing is to guarantee that the contract works as it should and that the code is safe from malicious attacks and unforeseen outcomes.
 
 ## Why the Need to Audit Smart Contracts?
 
@@ -126,12 +100,13 @@ Okayyy! Let's jump into auditing a code base!
 
 Remember, we'll be working on the project using Foundry and Slither. [Click here](https://github.com/natachigram/audit-practice.git) to access the project's github repository.
 
-1. **First, open Vscode. Then, make a new folder and clone the** [**github repo**](https://github.com/natachigram/audit-practice.git) **for this task. After that, go to your terminal and type "forge install".**
+1. **First, clone the** [github repo for this project](https://github.com/natachigram/audit-practice.git)
     
     ```plaintext
     $ https://github.com/natachigram/audit-practice.git
     $ cd audit-practice
     $ forge install
+    $ forge build
     ```
     
     In the <mark>audit/src/ </mark> folder, there are three contracts written in Solidity. We will be using these contracts for this tutorial. Also, remember to look at the <mark>audit/test/</mark> folder, as we will discuss it later.
@@ -147,19 +122,22 @@ Remember, we'll be working on the project using Foundry and Slither. [Click here
     You'll see some results in three groups: high (green), medium (yellow), and low (green) vulnerabilities. You can achieve the same outcome by using the slither extension in vscode. **Just click on the slither icon and then run it.**
     
 
+
+<img src="https://user-images.githubusercontent.com/56264430/224981540-fe910fd7-7802-4978-a1ae-89c6ead74e9f.png" style="width:100%;height:350px"/>  
+
 Slither found two high level risks:
 
 The ReentrancyExample.sol contract has a <mark>reentrancy issue.</mark>
 
 The OverUnderVul.sol contract uses a <mark>weak PRNG</mark>.
 
-<img src="images/vul.png" style="width:100%;height:350px"/>       
+<img src="images/vul.png" style="width:100%;height:350px"/>  
 
 If you examine closely, you'll see that Slither missed a major problem in the OverUnderVul.sol contract and ReplayVul.sol. That's why it's important to also manually go through the code one line at a time.
 
 1. **Manual Code Review:**
     
-    we will going over the **OverUnderVul.sol which is a Lottery contract first.**
+    We will go over the **OverUnderVul.sol which is a Lottery contract first.**
     
     ```solidity
     // SPDX-License-Identifier: MIT
@@ -464,7 +442,7 @@ contract ReentrancyAttack {
 
 This contract creates a new `ReentrancyAttack` contract and sets the `target` to the address of the `ReentrancyExample` contract. The `attack` function is called repeatedly to execute the `withdraw` function of the `ReentrancyExample` contract. The `receive` function is a fallback function that is called when the contract receives Ether. This function also calls the `withdraw` function, allowing the attacker to repeatedly withdraw funds from the `ReentrancyExample` contract.
 
-To protect against this attack, we can deploy the updated `ReentrancyExample` contract with the mutex protection described earlier.
+To protect against this attack, we can deploy the updated `ReentrancyExample` contract with the mutex protection described earlier and also we could use the [Reentrancy guard contract from openzeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/security/ReentrancyGuard.sol).
 
 Yeah that's it, we just concluded the audit!
 
