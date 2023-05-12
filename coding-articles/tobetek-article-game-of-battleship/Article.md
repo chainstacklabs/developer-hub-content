@@ -498,6 +498,17 @@ In brief,
 
 To prevent signing arbitrary messages from signing transactions, messages are prefixed with `"\x19Ethereum Signed Message:\n"` + `length of the message`. Taking a look at our SigVerifier contract, we hardcoded the length of the message to be **32**. We do that because we always hash our messages/data, and the length of hashes is always 32 bytes.
 
+### Stats for Nerds
+Here are some screenshots of the test case running through
+![HardHat Test Run Image 1](./images/hardhat-test-1.png)
+![HardHat Test Run Image 2](./images/hardhat-test-2.png)
+![HardHat Test Run Image 3](./images/hardhat-test-3.png)
+![HardHat Test Run Image 4](./images/hardhat-test-4.png)
+
+And Gas reports
+![HardHat Gas Report](./images/gas-reports.png)
+
+> Apparently `joinGame` is our most expensive function
 
 # Conclusion
 We're finally done! We've built a complete game of incomplete information on a public blockchain. While we've built a game for recreation, these concepts could easily be applied to other ideas and projects. For example, we could create an anonymous NFT marketplace, where the owners of NFTs remain private, but they can verify their identity and sign off on bids.

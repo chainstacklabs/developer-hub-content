@@ -40,8 +40,8 @@
       ]
     },
     "/mnt/c/users/user/documents/coding/chainstack-developer-hub-content/coding-articles/tobetek-article-game-of-battleship/code/contracts/Verify.sol": {
-      "lastModificationDate": 1679305152887,
-      "contentHash": "6b9478d0c8c35a77aab4b8d3cdfda1dc",
+      "lastModificationDate": 1683888396670,
+      "contentHash": "70629a9ba513be06ef20dba479eae61e",
       "sourceName": "contracts/Verify.sol",
       "solcConfig": {
         "version": "0.8.17",
