@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/Battleship.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> Battleship.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>62/62</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>46/50</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>11/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>75/75</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-yes">132×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">131×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">70×</span>
+<span class="cline-any cline-yes">69×</span>
+<span class="cline-any cline-yes">68×</span>
+<span class="cline-any cline-yes">68×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-yes">67×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">65×</span>
+<span class="cline-any cline-yes">64×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">62×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">48×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">124×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">194×</span>
+<span class="cline-any cline-yes">194×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">93×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">63×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">137×</span>
+<span class="cline-any cline-yes">271×</span>
+<span class="cline-any cline-yes">271×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">134×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity ^0.8.10;
+&nbsp;
+import "hardhat/console.sol";
+import "contracts/Verify.sol";
+&nbsp;
+contract BattleShipGame is SigVerifier {
+    // Admin
+    address payable public owner;
+&nbsp;
+    // Max Number of players participating in the game
+    uint public constant NO_PLAYERS = 2;
+&nbsp;
+    // Number of ship pieces a player can have, to build their ships
+    uint public constant NO_SHIP_PIECES = 10;
+&nbsp;
+    // All the players participating in the game
+    mapping(address =&gt; bool) public players;
+    address[] public playersAddress; // We use an array because it's easier to iterate than a mapping
+&nbsp;
+    // Player ships
+    mapping(address =&gt; mapping(bytes =&gt; bool)) ships;
+&nbsp;
+    // Player ships that have been destroyed
+    mapping(address =&gt; Coordinate[]) destroyedShips;
+&nbsp;
+    // Players who have lost all their ships
+    mapping(address =&gt; bool) public destroyedPlayers;
+    uint public numberOfDestroyedPlayers;
+&nbsp;
+    mapping(address =&gt; Coordinate) public playerShots;
+    mapping(address =&gt; bool) public playerHasPlayed;
+    mapping(address =&gt; bool) public playerHasPlacedShips;
+    mapping(address =&gt; bool) public playerHasReportedHits;
+&nbsp;
+    bool public isGameOver;
+&nbsp;
+    struct Coordinate {
+        uint8 x;
+        uint8 y;
+    }
+&nbsp;
+    struct ShipShotProof {
+        bytes signature;
+        // The address of the player that shot
+        // at this coordinate
+        address shotBy;
+    }
+&nbsp;
+    event ShotReport(
+        Coordinate coord,
+        address target,
+        address shotBy,
+        bool isHit
+    );
+&nbsp;
+    event PlayerJoinedGame(address player, uint playerIndex);
+&nbsp;
+    // Emitted when a player loses all his ships
+    event PlayerLost(address player);
+&nbsp;
+    constructor(address[] memory _playersAddress) payable {
+        require(
+            _playersAddress.length == NO_PLAYERS,
+            "_playersAddress does not match the number of expected players"
+        );
+        for (uint i = 0; i &lt; _playersAddress.length; i++) {
+            address playerAddress = _playersAddress[i];
+            players[playerAddress] = true;
+            playersAddress.push(playerAddress);
+            emit PlayerJoinedGame(playerAddress, i);
+        }
+        owner = payable(msg.sender);
+    }
+&nbsp;
+    function joinGame(bytes[] memory _playerShips) public {
+        require(!isGameOver, "Game is over");
+        require(players[msg.sender], "Address is not a part of this game");
+        require(
+            _playerShips.length == NO_SHIP_PIECES,
+            "Number of ship pieces does not match the expected value"
+        );
+        require(
+            !playerHasPlacedShips[msg.sender],
+            "Player has already placed ships"
+        );
+&nbsp;
+        for (uint i = 0; i &lt; _playerShips.length; i++) {
+            bytes memory shipHash = _playerShips[i];
+            require(
+                !ships[msg.sender][shipHash],
+                "User has already placed a ship on this tile."
+            );
+            ships[msg.sender][shipHash] = true;
+        }
+        playerHasPlacedShips[msg.sender] = true;
+    }
+&nbsp;
+    function takeAShot(Coordinate memory _coord) public {
+        require(isGameStarted(), "Game hasn't started");
+        require(!isGameOver, "Game is over");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(players[msg.sender], "msg.sender is not a player in this game");
+        require(
+            !playerHasPlayed[msg.sender],
+            "Player has made a move for this turn"
+        );
+&nbsp;
+        playerShots[msg.sender] = _coord;
+        playerHasPlayed[msg.sender] = true;
+    }
+&nbsp;
+    function reportHits(ShipShotProof[] memory _shotSignatures) public {
+        require(isGameStarted(), "Game hasn't started");
+        require(!isGameOver, "Game is over");
+        require(isTurnOver(), "All players have not played for this turn.");
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
+            _shotSignatures.length &lt;= NO_PLAYERS,
+            "No way you can validate more shots than there are players!"
+        );
+&nbsp;
+        for (uint i = 0; i &lt; _shotSignatures.length; i++) {
+            ShipShotProof memory shotProof = _shotSignatures[i];
+            (bool _isHit, Coordinate memory coord) = isHit(shotProof);
+            if (_isHit) {
+                destroyPlayerShip(msg.sender, coord);
+            }
+            emit ShotReport({
+                coord: coord,
+                target: msg.sender,
+                shotBy: shotProof.shotBy,
+                isHit: _isHit
+            });
+        }
+        playerHasReportedHits[msg.sender] = true;
+    }
+&nbsp;
+    function isHit(
+        ShipShotProof memory _hitProof
+    ) internal view returns (bool, Coordinate memory) {
+        Coordinate memory _playerShot = playerShots[_hitProof.shotBy];
+        bytes32 _calculatedHash = keccak256(
+            abi.encodePacked(_playerShot.x, _playerShot.y)
+        );
+&nbsp;
+        (uint8 v, bytes32 r, bytes32 s) = SplitSignature(_hitProof.signature);
+        address signer = RecoverSigner(_calculatedHash, v, r, s);
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(
+            signer == msg.sender,
+            "msg.sender and derived message signer do not match"
+        );
+&nbsp;
+        // A ship piece at this coordinate exists
+        return (ships[msg.sender][_hitProof.signature] == true, _playerShot);
+    }
+&nbsp;
+    //
+    function destroyPlayerShip(
+        address _player,
+        Coordinate memory _coord
+    ) internal {
+        destroyedShips[_player].push(_coord);
+&nbsp;
+        // All of a player's ships have been destroyed
+        if (destroyedShips[_player].length == NO_SHIP_PIECES) {
+            destroyedPlayers[_player] = true;
+            numberOfDestroyedPlayers++;
+            emit PlayerLost(_player);
+        }
+    }
+&nbsp;
+    // Check if all players have played for this turn
+    function isTurnOver() public view returns (bool) {
+        for (uint i = 0; i &lt; playersAddress.length; i++) {
+            address _playerAddress = playersAddress[i];
+            if (!playerHasPlayed[_playerAddress]) {
+                return false;
+            }
+        }
+        return true;
+    }
+&nbsp;
+    function hasReportedShots() public view returns (bool) {
+        for (uint i = 0; i &lt; playersAddress.length; i++) {
+            address _playerAddress = playersAddress[i];
+            if (!playerHasReportedHits[_playerAddress]) {
+                return false;
+            }
+        }
+        return true;
+    }
+&nbsp;
+    // End the current turn and reset all variables
+    function endTurn() public returns (bool) {
+        require(
+            isTurnOver(),
+            "The turn is not yet over, some players are yet to shoot"
+        );
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(hasReportedShots(), "Some players are yet to report hits");
+&nbsp;
+        // Do we have a winner?
+        // Only one player is left standing
+        // It's also possible that everybody destroyed everybody. (Edge case)
+        if (numberOfDestroyedPlayers &gt;= (NO_PLAYERS - 1)) {
+            isGameOver = true;
+        }
+&nbsp;
+        for (uint i = 0; i &lt; playersAddress.length; i++) {
+            address _playerAddress = playersAddress[i];
+            playerHasPlayed[_playerAddress] = false;
+            playerHasReportedHits[_playerAddress] = false;
+            playerShots[_playerAddress] = Coordinate({x: 0, y: 0});
+        }
+        return true;
+    }
+&nbsp;
+    function isGameStarted() public view returns (bool) {
+        for (uint i = 0; i &lt; playersAddress.length; i++) {
+            address _playerAddress = playersAddress[i];
+            if (!playerHasPlacedShips[_playerAddress]) {
+                return false;
+            }
+        }
+        return true;
+    }
+&nbsp;
+    function getWinner() public view returns (address winner) {
+        require(isGameOver, "The game isn't over yet");
+        for (uint i = 0; i &lt; playersAddress.length; i++) {
+            address _playerAddress = playersAddress[i];
+            if (!destroyedPlayers[_playerAddress]) {
+                return _playerAddress;
+            }
+        }
+        // No winner
+        return address(0);
+    }
+}
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 12 2023 10:58:11 GMT+0100 (West Africa Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
