@@ -126,15 +126,7 @@ No. All content must be original and not previously published.
 
 **Do I get paid if one of my articles/tutorials is published?**
 
-Yes, of course.
-
-**How much do you pay for each article?**
-
-There is a fixed reward of $200 for every accepted and published article.
-
-**How do I get paid?**
-
-Once your article has been published, you have to create an invoice and send it to us.
+No. You get a byline however.
 
 **Can I promote my personal project on the article?**
 
