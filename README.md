@@ -2,9 +2,9 @@
 
 # Chainstack Developer Hub
 
-The Chainstack Developer Hub is an initiative that encourages developers to submit articles and tutorials which will be published in the [Chainstack blog](https://chainstack.com/blog/), and **get paid for it**.
+The Chainstack Developer Hub is an initiative that encourages developers to submit articles and tutorials which will be published at the [Chainstack Developer Portal](https://docs.chainstack.com/).
 
-You can [find more details in the press release]().
+Note that this an **unpaid** opportunity to get web3 cred by getting published at the Chainstack Developer Portal with your short bio. A short bio is put at the bottom of the article. See [an example](https://docs.chainstack.com/docs/blob-transactions-the-hard-way#about-the-author).
 
 ## Contribute guidelines
 
@@ -60,11 +60,7 @@ Your article will be reviewed by the Chainstack team and comments will be added 
 
 Once the article is ready to be published, we'll schedule it and let you know the publication date.
 
-### 5. Get rewarded
-
-Once your article is published in the blog, you'll get rewarded for it. 💰
-
-### 6. Provide support
+### 5. Provide support
 
 Once your article is published, some members of the community might need assistance or find issues. You'll be asked to provide support on those cases.
 
