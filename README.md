@@ -2,9 +2,9 @@
 
 # Chainstack Developer Hub
 
-The Chainstack Developer Hub is an initiative that encourages developers to submit articles and tutorials which will be published at the [Chainstack Developer Portal](https://docs.chainstack.com/).
+The Chainstack Developer Hub is an initiative that encourages developers to submit articles and tutorials which will be published at the [Chainstack Developer Portal](https://docs.chainstack.com/?utm_source=github&utm_medium=referral&utm_campaign=developer-hub-content).
 
-Note that this an **unpaid** opportunity to get web3 cred by getting published at the Chainstack Developer Portal with your short bio. A short bio is put at the bottom of the article. See [an example](https://docs.chainstack.com/docs/blob-transactions-the-hard-way#about-the-author).
+Note that this an **unpaid** opportunity to get web3 cred by getting published at the Chainstack Developer Portal with your short bio. A short bio is put at the bottom of the article. See [an example](https://docs.chainstack.com/docs/blob-transactions-the-hard-way?utm_source=github&utm_medium=referral&utm_campaign=developer-hub-content#about-the-author).
 
 ## Contribute guidelines
 
@@ -79,7 +79,7 @@ Once your article is published, some members of the community might need assista
 ### Subject requirements
 
 - Your submission must take a neutral stance and **refrain from promoting other projects**.
-- Your submission must cover one or more of [Chainstack’s supported protocols](https://chainstack.com/protocols/).
+- Your submission must cover one or more of [Chainstack’s supported protocols](https://chainstack.com/protocols/?utm_source=github&utm_medium=referral&utm_campaign=developer-hub-content).
 - Your submission must cover one or more of the following Web3 topics:
   - Protocols
   - Full or archive
